@@ -3,6 +3,7 @@ import { TaskService, Task } from '../task.service';
 import { MatDialog } from '@angular/material/dialog';
 import { TaskFormComponent } from '../task-form/task-form.component';
 import { TaskViewComponent } from '../task-view/task-view.component';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-task-list',
@@ -25,7 +26,15 @@ export class TaskListComponent implements OnInit {
   }
 
   deleteTask(taskId: number) {
-    this.taskService.deleteTask(taskId);
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: { message: 'Are you sure you want to delete this task?' }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.taskService.deleteTask(taskId);
+      }
+    });
   }
 
   openTaskForm(task?: Task) {

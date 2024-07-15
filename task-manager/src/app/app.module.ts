@@ -7,6 +7,7 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { TaskFormComponent } from './task-form/task-form.component';
 import { TaskViewComponent } from './task-view/task-view.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 // Import Angular Material components
 import { MatInputModule } from '@angular/material/input';
@@ -33,7 +34,8 @@ import { TaskFilterPipe } from './task-filter.pipe';
     TaskListComponent,
     TaskFormComponent,
     TaskViewComponent,
-    TaskFilterPipe
+    TaskFilterPipe,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,

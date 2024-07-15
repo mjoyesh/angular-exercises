@@ -30,10 +30,10 @@ export class TaskFormComponent implements OnInit {
   saveTask() {
     if (this.taskForm.valid) {
       const task: Task = {
-        id: Date.now(),
+        id: this.data ? this.data.id : Date.now(),
         ...this.taskForm.value,
         tags: this.taskForm.value.tags.split(',').map((tag: string) => tag.trim()),
-        completed: false
+        completed: this.data ? this.data.completed : false
       };
       this.dialogRef.close(task);
     }
